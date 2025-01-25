@@ -52,23 +52,16 @@ export default function ProjectCarousel() {
     }
   }, [emblaApi]);
 
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
   useEffect(() => {
     if (!emblaApi) return;
-    emblaApi.on('select', onSelect);
 
-    const onPointerDown = () => setUserInteracted(true);
-    emblaApi.rootNode().addEventListener('pointerdown', onPointerDown);
-
-    return () => {
-      emblaApi.off('select', onSelect);
-      emblaApi.rootNode().removeEventListener('pointerdown', onPointerDown);
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
     };
-  }, [emblaApi, onSelect]);
+
+    emblaApi.on('select', onSelect);
+    return () => emblaApi.off('select', onSelect);
+  }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi || userInteracted) return;
@@ -77,31 +70,29 @@ export default function ProjectCarousel() {
       emblaApi.scrollNext();
     }, AUTOPLAY_INTERVAL);
 
-    return () => {
-      clearInterval(autoplay);
-    };
+    return () => clearInterval(autoplay);
   }, [emblaApi, userInteracted]);
 
   return (
-    <div className="relative px-12">
-      <div className="bg-white/10 border-white/20 backdrop-blur-sm rounded-lg overflow-hidden">
+    <div className="relative max-w-2xl mx-auto px-8">
+      <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg overflow-hidden">
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex -ml-4">
+          <div className="flex">
             {projects.map((project) => (
-              <div key={project.id} className="flex-[0_0_100%] min-w-0 pl-4">
-                <div className="p-6">
-                  <div className="space-y-4">
-                    <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
+              <div key={project.id} className="flex-[0_0_100%] min-w-0">
+                <div className="p-4">
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-semibold text-white">{project.title}</h3>
                     <Separator className="bg-white/20" />
-                    <p className="text-white/80">
+                    <p className="text-sm text-white/80">
                       {project.description}
                     </p>
-                    <Button variant="outline" asChild className="border-white/20 hover:bg-white/10">
+                    <Button variant="outline" asChild className="w-full border-white/20 hover:bg-white/10">
                       <a 
                         href={project.figmaLink}
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2"
+                        className="flex items-center justify-center gap-2"
                       >
                         <SiFigma className="h-4 w-4" />
                         View in Figma
@@ -116,7 +107,7 @@ export default function ProjectCarousel() {
         </div>
       </div>
 
-      <div className="flex justify-center gap-2 mt-4">
+      <div className="flex justify-center gap-2 mt-3">
         {projects.map((_, index) => (
           <button
             key={index}
@@ -124,7 +115,7 @@ export default function ProjectCarousel() {
               setUserInteracted(true);
               emblaApi?.scrollTo(index);
             }}
-            className={`w-2 h-2 rounded-full transition-colors ${
+            className={`w-1.5 h-1.5 rounded-full transition-colors ${
               index === selectedIndex ? 'bg-white' : 'bg-white/30'
             }`}
           />
