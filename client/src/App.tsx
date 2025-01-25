@@ -7,8 +7,8 @@ import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
 import Projects from "@/pages/Projects";
 
-// Add base path for GitHub Pages - this should match your repository name
-const base = process.env.NODE_ENV === "production" ? "/portfolio-website/" : "/";
+// Base path for GitHub Pages - user/organization site
+const base = "/";
 
 function Router() {
   return (

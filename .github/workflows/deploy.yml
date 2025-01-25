@@ -28,17 +28,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Debug build output
-        run: |
-          echo "Current directory contents:"
-          ls -la
-          echo "\nDist directory contents:"
-          ls -la dist/
-          echo "\nDist/public directory contents:"
-          ls -la dist/public/
-          echo "\nChecking for index.html:"
-          find . -name "index.html"
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
