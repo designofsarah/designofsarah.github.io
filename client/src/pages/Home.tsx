@@ -16,13 +16,13 @@ export default function Home() {
 
         <div className="flex gap-4">
           <Button variant="outline" size="icon" asChild className="border-white/20 hover:bg-white/10">
-            <a href="https://linkedin.com/in/sarahkhan" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/sarah-razvi/" target="_blank" rel="noopener noreferrer">
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </a>
           </Button>
           <Button variant="outline" size="icon" asChild className="border-white/20 hover:bg-white/10">
-            <a href="mailto:sarah@example.com">
+            <a href="mailto:sarahrazvi96@gmail.com">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
             </a>
