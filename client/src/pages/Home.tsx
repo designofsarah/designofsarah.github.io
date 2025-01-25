@@ -4,7 +4,7 @@ import ProjectCarousel from "@/components/ProjectCarousel";
 
 export default function Home() {
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-4xl mx-auto space-y-6 px-4 sm:px-6">
       <section className="space-y-4">
         <div className="space-y-3 max-w-2xl">
           <h1 className="text-4xl font-bold text-white">Sarah Khan</h1>
@@ -30,8 +30,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold text-white">Featured Projects</h2>
+      <section>
+        <h2 className="text-xl font-semibold text-white mb-4">Featured Projects</h2>
         <ProjectCarousel />
       </section>
     </div>
