@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import { cn } from "@/lib/utils";
 
 interface LayoutProps {
@@ -16,7 +15,6 @@ export default function Layout({ children }: LayoutProps) {
         backgroundAttachment: 'fixed'
       }}
     >
-      <Navbar />
       <main className="container mx-auto px-4 py-8">
         {children}
       </main>
