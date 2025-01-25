@@ -10,21 +10,21 @@ const AUTOPLAY_INTERVAL = 4000;
 const projects = [
   {
     id: 1,
-    title: "Travel App Redesign",
-    description: "A complete redesign of a travel booking application focusing on user experience and accessibility.",
-    figmaLink: "https://figma.com/file/..."
+    title: "Car Rental App",
+    description: "A modern car rental application with seamless booking experience and intuitive user interface.",
+    figmaLink: "https://www.figma.com/design/eq8SnoBAVGAkAclPhauXKS/Car-rental-App?node-id=0-1&t=aHQ7CHosWtfMWrLG-1"
   },
   {
     id: 2,
-    title: "E-commerce Dashboard",
-    description: "Modern dashboard interface for managing online store inventory and analytics.",
-    figmaLink: "https://figma.com/file/..."
+    title: "Checkout Page Design",
+    description: "Streamlined e-commerce checkout experience with focus on conversion optimization and user flow.",
+    figmaLink: "https://www.figma.com/design/qbHaXVGqwM7pYgO0BCguXQz/Checkout-Page?node-id=0-1&t=dweGttDpcqajUnSh-1"
   },
   {
     id: 3,
-    title: "Healthcare Portal",
-    description: "Patient-centric healthcare portal focusing on easy appointment booking and medical records access.",
-    figmaLink: "https://figma.com/file/..."
+    title: "Naruto Character Explorer",
+    description: "Interactive interface showcasing Naruto characters with detailed information and visual appeal.",
+    figmaLink: "https://www.figma.com/design/l9b1Xm7wM7pYgO0BCguXQz/Naruto-characters?node-id=0-1&t=l391z1UEydtijTcz-1"
   }
 ];
 
