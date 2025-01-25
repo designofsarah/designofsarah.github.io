@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Linkedin, Mail, ExternalLink } from "lucide-react";
-import { SiFigma } from "react-icons/si";
+import { Linkedin, Mail } from "lucide-react";
+import ProjectCarousel from "@/components/ProjectCarousel";
 
 export default function Home() {
   return (
@@ -33,32 +32,7 @@ export default function Home() {
 
       <section className="space-y-8">
         <h2 className="text-2xl font-semibold">Featured Projects</h2>
-
-        <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-6 space-y-4">
-          <img 
-            src="/project1.jpg" 
-            alt="Project Preview" 
-            className="w-full rounded-lg shadow-lg"
-          />
-          <div className="space-y-2">
-            <h3 className="text-xl font-semibold">Travel App Redesign</h3>
-            <p className="text-white/80">
-              A complete redesign of a travel booking application focusing on user experience and accessibility.
-            </p>
-            <Button variant="outline" asChild className="border-white/20 hover:bg-white/10">
-              <a 
-                href="https://figma.com/file/..." 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <SiFigma className="h-4 w-4" />
-                View in Figma
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            </Button>
-          </div>
-        </Card>
+        <ProjectCarousel />
       </section>
     </div>
   );
