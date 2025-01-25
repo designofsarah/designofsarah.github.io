@@ -33,13 +33,20 @@ const projects = [
 export default function ProjectCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [userInteracted, setUserInteracted] = useState(false);
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
+    if (emblaApi) {
+      setUserInteracted(true);
+      emblaApi.scrollPrev();
+    }
   }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
+    if (emblaApi) {
+      setUserInteracted(true);
+      emblaApi.scrollNext();
+    }
   }, [emblaApi]);
 
   const onSelect = useCallback(() => {
@@ -50,13 +57,18 @@ export default function ProjectCarousel() {
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on('select', onSelect);
+
+    const onPointerDown = () => setUserInteracted(true);
+    emblaApi.rootNode().addEventListener('pointerdown', onPointerDown);
+
     return () => {
       emblaApi.off('select', onSelect);
+      emblaApi.rootNode().removeEventListener('pointerdown', onPointerDown);
     };
   }, [emblaApi, onSelect]);
 
   useEffect(() => {
-    if (!emblaApi) return;
+    if (!emblaApi || userInteracted) return;
 
     const autoplay = setInterval(() => {
       emblaApi.scrollNext();
@@ -65,41 +77,43 @@ export default function ProjectCarousel() {
     return () => {
       clearInterval(autoplay);
     };
-  }, [emblaApi]);
+  }, [emblaApi, userInteracted]);
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {projects.map((project) => (
-            <div key={project.id} className="flex-[0_0_100%] min-w-0">
-              <div className="bg-white/10 border-white/20 backdrop-blur-sm p-6 space-y-4 m-4 rounded-lg">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full rounded-lg shadow-lg"
-                />
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                  <p className="text-white/80">
-                    {project.description}
-                  </p>
-                  <Button variant="outline" asChild className="border-white/20 hover:bg-white/10">
-                    <a 
-                      href={project.figmaLink}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
-                      <SiFigma className="h-4 w-4" />
-                      View in Figma
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </Button>
+    <div className="relative px-12">
+      <div className="bg-white/10 border-white/20 backdrop-blur-sm rounded-lg">
+        <div className="overflow-hidden p-6" ref={emblaRef}>
+          <div className="flex">
+            {projects.map((project) => (
+              <div key={project.id} className="flex-[0_0_100%] min-w-0">
+                <div className="space-y-4">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full rounded-lg shadow-lg"
+                  />
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+                    <p className="text-white/80">
+                      {project.description}
+                    </p>
+                    <Button variant="outline" asChild className="border-white/20 hover:bg-white/10">
+                      <a 
+                        href={project.figmaLink}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        <SiFigma className="h-4 w-4" />
+                        View in Figma
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
@@ -107,10 +121,13 @@ export default function ProjectCarousel() {
         {projects.map((_, index) => (
           <button
             key={index}
+            onClick={() => {
+              setUserInteracted(true);
+              emblaApi?.scrollTo(index);
+            }}
             className={`w-2 h-2 rounded-full transition-colors ${
               index === selectedIndex ? 'bg-white' : 'bg-white/30'
             }`}
-            onClick={() => emblaApi?.scrollTo(index)}
           />
         ))}
       </div>
@@ -118,7 +135,7 @@ export default function ProjectCarousel() {
       <Button
         variant="outline"
         size="icon"
-        className="absolute left-4 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10"
+        className="absolute left-0 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10"
         onClick={scrollPrev}
       >
         <ChevronLeft className="h-4 w-4 text-white" />
@@ -127,7 +144,7 @@ export default function ProjectCarousel() {
       <Button
         variant="outline"
         size="icon"
-        className="absolute right-4 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10"
+        className="absolute right-0 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10"
         onClick={scrollNext}
       >
         <ChevronRight className="h-4 w-4 text-white" />
