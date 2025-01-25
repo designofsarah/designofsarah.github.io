@@ -3,6 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from "@/components/ui/button";
 import { SiFigma } from "react-icons/si";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 const AUTOPLAY_INTERVAL = 4000;
 
@@ -11,21 +12,18 @@ const projects = [
     id: 1,
     title: "Travel App Redesign",
     description: "A complete redesign of a travel booking application focusing on user experience and accessibility.",
-    image: "/project1.jpg",
     figmaLink: "https://figma.com/file/..."
   },
   {
     id: 2,
     title: "E-commerce Dashboard",
     description: "Modern dashboard interface for managing online store inventory and analytics.",
-    image: "/project2.jpg",
     figmaLink: "https://figma.com/file/..."
   },
   {
     id: 3,
     title: "Healthcare Portal",
     description: "Patient-centric healthcare portal focusing on easy appointment booking and medical records access.",
-    image: "/project3.jpg",
     figmaLink: "https://figma.com/file/..."
   }
 ];
@@ -93,29 +91,23 @@ export default function ProjectCarousel() {
               <div key={project.id} className="flex-[0_0_100%] min-w-0 pl-4">
                 <div className="p-6">
                   <div className="space-y-4">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full rounded-lg shadow-lg"
-                    />
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                      <p className="text-white/80">
-                        {project.description}
-                      </p>
-                      <Button variant="outline" asChild className="border-white/20 hover:bg-white/10">
-                        <a 
-                          href={project.figmaLink}
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2"
-                        >
-                          <SiFigma className="h-4 w-4" />
-                          View in Figma
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
-                      </Button>
-                    </div>
+                    <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
+                    <Separator className="bg-white/20" />
+                    <p className="text-white/80">
+                      {project.description}
+                    </p>
+                    <Button variant="outline" asChild className="border-white/20 hover:bg-white/10">
+                      <a 
+                        href={project.figmaLink}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        <SiFigma className="h-4 w-4" />
+                        View in Figma
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
                   </div>
                 </div>
               </div>
