@@ -4,11 +4,18 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
+import Blog from "@/pages/Blog";
+import Projects from "@/pages/Projects";
+
+// Add base path for GitHub Pages
+const base = "/";
 
 function Router() {
   return (
     <Layout>
-      <Route path="/" component={Home} />
+      <Route path={`${base}`} component={Home} />
+      <Route path={`${base}blog`} component={Blog} />
+      <Route path={`${base}projects`} component={Projects} />
     </Layout>
   );
 }

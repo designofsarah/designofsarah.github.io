@@ -28,15 +28,21 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Prepare deployment
+      - name: Debug build output
         run: |
-          mkdir -p ./deployment
-          cp -r dist/public/* ./deployment/
+          echo "Current directory contents:"
+          ls -la
+          echo "\nDist directory contents:"
+          ls -la dist/
+          echo "\nDist/public directory contents:"
+          ls -la dist/public/
+          echo "\nChecking for index.html:"
+          find . -name "index.html"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./deployment
+          path: dist/public
 
   deploy:
     needs: build
