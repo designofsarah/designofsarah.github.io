@@ -74,29 +74,29 @@ export default function ProjectCarousel() {
   }, [emblaApi, userInteracted]);
 
   return (
-    <div className="relative max-w-2xl mx-auto px-8">
+    <div className="relative max-w-xl mx-auto px-4 sm:px-6">
       <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg overflow-hidden">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {projects.map((project) => (
               <div key={project.id} className="flex-[0_0_100%] min-w-0">
-                <div className="p-4">
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+                <div className="p-3">
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-white">{project.title}</h3>
                     <Separator className="bg-white/20" />
-                    <p className="text-sm text-white/80">
+                    <p className="text-sm text-white/80 line-clamp-2">
                       {project.description}
                     </p>
-                    <Button variant="outline" asChild className="w-full border-white/20 hover:bg-white/10">
+                    <Button variant="outline" asChild className="w-full mt-2 border-white/20 hover:bg-white/10">
                       <a 
                         href={project.figmaLink}
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2"
+                        className="flex items-center justify-center gap-2 text-sm"
                       >
                         <SiFigma className="h-4 w-4" />
                         View in Figma
-                        <ExternalLink className="h-4 w-4" />
+                        <ExternalLink className="h-3 w-3" />
                       </a>
                     </Button>
                   </div>
@@ -107,7 +107,7 @@ export default function ProjectCarousel() {
         </div>
       </div>
 
-      <div className="flex justify-center gap-2 mt-3">
+      <div className="flex justify-center gap-1.5 mt-2">
         {projects.map((_, index) => (
           <button
             key={index}
@@ -125,7 +125,7 @@ export default function ProjectCarousel() {
       <Button
         variant="outline"
         size="icon"
-        className="absolute left-0 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10"
+        className="absolute left-0 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10 h-8 w-8"
         onClick={scrollPrev}
       >
         <ChevronLeft className="h-4 w-4 text-white" />
@@ -133,8 +133,8 @@ export default function ProjectCarousel() {
 
       <Button
         variant="outline"
-        size="icon"
-        className="absolute right-0 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10"
+        size="icon" 
+        className="absolute right-0 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10 h-8 w-8"
         onClick={scrollNext}
       >
         <ChevronRight className="h-4 w-4 text-white" />
