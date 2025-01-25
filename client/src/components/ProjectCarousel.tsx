@@ -11,19 +11,19 @@ const projects = [
   {
     id: 1,
     title: "Car Rental App",
-    description: "A modern car rental application with seamless booking experience and intuitive user interface.",
+    description: "A modern car rental application with seamless booking experience and intuitive user interface. Features include real-time availability, detailed car specifications, and a streamlined reservation process.",
     figmaLink: "https://www.figma.com/design/eq8SnoBAVGAkAclPhauXKS/Car-rental-App?node-id=0-1&t=aHQ7CHosWtfMWrLG-1"
   },
   {
     id: 2,
     title: "Checkout Page Design",
-    description: "Streamlined e-commerce checkout experience with focus on conversion optimization and user flow.",
+    description: "Streamlined e-commerce checkout experience with focus on conversion optimization and user flow. Implements best practices in form design, payment integration, and order confirmation process.",
     figmaLink: "https://www.figma.com/design/qbHaXVGqwM7pYgO0BCguXQz/Checkout-Page?node-id=0-1&t=dweGttDpcqajUnSh-1"
   },
   {
     id: 3,
     title: "Naruto Character Explorer",
-    description: "Interactive interface showcasing Naruto characters with detailed information and visual appeal.",
+    description: "Interactive interface showcasing Naruto characters with detailed information and visual appeal. Features character profiles, jutsu details, and village affiliations in an engaging layout.",
     figmaLink: "https://www.figma.com/design/l9b1Xm7wM7pYgO0BCguXQz/Naruto-characters?node-id=0-1&t=l391z1UEydtijTcz-1"
   }
 ];
@@ -80,14 +80,14 @@ export default function ProjectCarousel() {
           <div className="flex">
             {projects.map((project) => (
               <div key={project.id} className="flex-[0_0_100%] min-w-0">
-                <div className="p-3">
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+                <div className="p-6">
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold text-white">{project.title}</h3>
                     <Separator className="bg-white/20" />
-                    <p className="text-sm text-white/80 line-clamp-2">
+                    <p className="text-sm text-white/80 leading-relaxed">
                       {project.description}
                     </p>
-                    <Button variant="outline" asChild className="w-full mt-2 border-white/20 hover:bg-white/10">
+                    <Button variant="outline" asChild className="w-full mt-4 border-white/20 hover:bg-white/10">
                       <a 
                         href={project.figmaLink}
                         target="_blank" 
@@ -107,7 +107,7 @@ export default function ProjectCarousel() {
         </div>
       </div>
 
-      <div className="flex justify-center gap-1.5 mt-2">
+      <div className="flex justify-center gap-1.5 mt-4">
         {projects.map((_, index) => (
           <button
             key={index}
@@ -115,7 +115,7 @@ export default function ProjectCarousel() {
               setUserInteracted(true);
               emblaApi?.scrollTo(index);
             }}
-            className={`w-1.5 h-1.5 rounded-full transition-colors ${
+            className={`w-2 h-2 rounded-full transition-colors ${
               index === selectedIndex ? 'bg-white' : 'bg-white/30'
             }`}
           />
@@ -125,7 +125,7 @@ export default function ProjectCarousel() {
       <Button
         variant="outline"
         size="icon"
-        className="absolute left-0 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10 h-8 w-8"
+        className="absolute -left-4 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10 h-8 w-8"
         onClick={scrollPrev}
       >
         <ChevronLeft className="h-4 w-4 text-white" />
@@ -134,7 +134,7 @@ export default function ProjectCarousel() {
       <Button
         variant="outline"
         size="icon" 
-        className="absolute right-0 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10 h-8 w-8"
+        className="absolute -right-4 top-1/2 -translate-y-1/2 border-white/20 hover:bg-white/10 h-8 w-8"
         onClick={scrollNext}
       >
         <ChevronRight className="h-4 w-4 text-white" />
