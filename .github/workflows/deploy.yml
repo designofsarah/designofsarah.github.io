@@ -6,10 +6,12 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,9 +28,29 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Debug build output
+        run: |
+          echo "Current directory contents:"
+          ls -la
+          echo "\nDist directory contents:"
+          ls -la dist/
+          echo "\nDist/public directory contents:"
+          ls -la dist/public/
+          echo "\nChecking for index.html:"
+          find . -name "index.html"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          folder: dist/public
-          branch: gh-pages
-          clean: true
+          path: dist/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

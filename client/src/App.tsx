@@ -7,12 +7,12 @@ import Home from "@/pages/Home";
 import NotFound from "@/pages/not-found";
 
 // Base path for GitHub Pages deployment
-const base = "/";
+//const base = "/";
 
 function Router() {
   return (
     <Layout>
-      <Switch base={base}>
+      <Switch>
         <Route path="/" component={Home} />
         <Route component={NotFound} />
       </Switch>
