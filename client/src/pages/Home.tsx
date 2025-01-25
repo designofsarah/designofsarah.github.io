@@ -11,7 +11,10 @@ export default function Home() {
             <h1 className="text-4xl font-bold text-white">Sarah Khan</h1>
             <p className="text-lg text-white/80">
               UI/UX Designer crafting delightful digital experiences.
-              Google UX Design Professional Certificate graduate.
+              <br />
+              <span className="block mt-2">
+                Google UX Design Professional Certificate graduate.
+              </span>
             </p>
           </div>
 
