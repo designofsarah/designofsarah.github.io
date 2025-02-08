@@ -25,6 +25,18 @@ const projects = [
     title: "Naruto Character Explorer",
     description: "Interactive interface showcasing Naruto characters with detailed information and visual appeal. Features character profiles, jutsu details, and village affiliations in an engaging layout.",
     figmaLink: "https://www.figma.com/design/l9b1Xm7wM7pYgO0BCguXQz/Naruto-characters?node-id=0-1&t=l391z1UEydtijTcz-1"
+  },
+  {
+    id: 4,
+    title: "My Card",
+    description: "Designing a user-friendly interface for scanning physical postcards using a smartphone camera. The focus will be on capturing high-quality images of both the front and back of postcards.",
+    figmaLink: "https://www.figma.com/design/zF99HPJiOgAIQaW1HoB0DU/Capstone-Project-MyCard-(New-Product)?node-id=2-2061&p=f&t=qAjt8iJiUVr7TdNo-0"
+  },
+  {
+    id: 5,
+    title: "eBay",
+    description: "Designing UI elements and interactions to enhance visibility of pay-per-click advertising for eBay sellers on desktop, utilizing eBay's existing design system style and aesthetics to maintain visual consistency.",
+    figmaLink: "https://www.figma.com/design/F4nWvvOOxwCqnXrtACI2Xd/Capstone-Project-Wrap-Up-(Feature-Addition)-(Community)?node-id=2-2061&p=f&t=fvB0TRbiuNuLgeKU-0"
   }
 ];
 
